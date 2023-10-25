@@ -15,6 +15,22 @@ def transiciones(estado, simbolo):
         return ['q2', 'q4']
     elif estado == 'q2' and simbolo == 'G':
         return ['q3']
+    elif estado == 'q3' and simbolo == 'A':
+        estado == ['q8']
+    elif estado == 'q3' and simbolo == 'T':
+        estado == ['q8']
+    elif estado == 'q3' and simbolo == 'C':
+        estado == ['q8']
+    elif estado == 'q3' and simbolo == 'G':
+        estado ==[]
+    elif estado == 'q4' and simbolo == 'A':
+        estado == ['q5', 'q8']
+    elif estado == 'q4' and simbolo == 'T':
+        estado == ['q2','q4','q5','q8']
+    elif estado == 'q4' and simbolo == 'C':
+        estado == ['q4', 'q8']
+    elif estado == 'q4' and simbolo == 'G':
+        estado == ['q5','q8']
 
 def main():    
     estados = {'q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8'}

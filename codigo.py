@@ -78,32 +78,7 @@ def main():
     estado_inicial = 'q1'
     estado_final = 'q8'
 
-    # Obtener la cadena ingresada por el usuario
-    # 
-    # 
-    # cadena = input("Ingrese un genoma, cromosoma o gen para analizar: ")
-    
-    # Extraer la cadena de una archivo FASTA
-    # 
-    # 
-    # Buscar el archivo
-    x = open(r'D:\proyectos\sequence.fasta','r')
-    # Obtener los datos
-    a = x.read()
-    # Eliminar la primera linea
-    b = a[47:]
-    # Eliminar los saltos de linea
-    c = b.replace("\n","")
-
-    # Extraer el gen F8 del cromosoma X
-    inicio  = "tgaggagtacaagagtag"
-    inicio_upper = inicio.upper()
-    final = 'ctcgccgccccaagcactt'
-    final_upper = final.upper()
-    B_index = c.find(inicio_upper)
-    E_index = c.find(final_upper)
-
-    cadena = c[B_index:E_index]
+    cadena = input("Ingrese una cadena con los digitos 0, 1, 2 o 3 en cualquier orden, para evaluar: ")
     
     estado_actual = {estado_inicial}
 

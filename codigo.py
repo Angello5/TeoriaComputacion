@@ -18,67 +18,68 @@ def transiciones(estado, simbolo):
         return ['q3','q6']
 
     elif estado == 'q3' and simbolo == 'A':
-        estado == ['q8']
+        return  ['q8']
     elif estado == 'q3' and simbolo == 'T':
-        estado == ['q8']
+        return  ['q8']
     elif estado == 'q3' and simbolo == 'C':
-        estado == ['q8']
+        return ['q8']
     elif estado == 'q3' and simbolo == 'G':
-        estado ==[]
+        return []
 
     elif estado == 'q4' and simbolo == 'A':
-        estado == ['q5', 'q8']
+        return  ['q5', 'q8']
     elif estado == 'q4' and simbolo == 'T':
-        estado == ['q2','q4','q5','q8']
+        return  ['q2','q4','q5','q8']
     elif estado == 'q4' and simbolo == 'C':
-        estado == ['q4', 'q8']
+        return  ['q4', 'q8']
     elif estado == 'q4' and simbolo == 'G':
-        estado == ['q5','q8']
+        return  ['q5','q8']
 
     elif estado == 'q5' and simbolo == 'A':
-        estado == ['q3','q8']
+        return  ['q3','q8']
     elif estado == 'q5' and simbolo == 'T':
-        estado == ['q3','q8']
+        return ['q3','q8']
     elif estado == 'q5' and simbolo == 'C':
-        estado == ['q3','q8']
+        return ['q3','q8']
     elif estado == 'q5' and simbolo == 'G':
-        estado == ['q8']
+        return ['q8']
 
     elif estado == 'q6' and simbolo == 'A':
-        estado == ['q8']
+        return ['q8']
     elif estado == 'q6' and simbolo == 'T':
-        estado == ['q8']
+        return  ['q8']
     elif estado == 'q6' and simbolo == 'C':
-        estado == ['q8']
+        return  ['q8']
     elif estado == 'q6' and simbolo == 'G':
-        estado == ['q8']
+        return ['q8']
 
     elif estado == 'q7' and simbolo == 'A':
-        estado == ['q7','q8']
+        return  ['q7','q8']
     elif estado == 'q7' and simbolo == 'T':
-        estado == ['q3','q8']
+        return  ['q3','q8']
     elif estado == 'q7' and simbolo == 'C':
-        estado == ['q7','q8']
+        return  ['q7','q8']
     elif estado == 'q7' and simbolo == 'G':
-        estado == ['q8']
+        return  ['q8']
 
     elif estado == 'q8' and simbolo == 'A':
-        estado == [ ]
+        return  [ ]
     elif estado == 'q8' and simbolo == 'T':
-        estado == [ ]
+        return  [ ]
     elif estado == 'q8' and simbolo == 'C':
-        estado == [ ]
+        return  [ ]
     elif estado == 'q8' and simbolo == 'G':
-        estado == [ ]
+        return  [ ]
 
+    return [ ]
 
 def main():
     estados = {'q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8'}
     alfabeto = {'A', 'T', 'C', 'G'}
     estado_inicial = 'q1'
-    estado_final = 'q8'
+    estado_final = {'q8'}
 
-    cadena = input("Ingrese una cadena con los digitos 0, 1, 2 o 3 en cualquier orden, para evaluar: ")
+    cadena = input("Ingrese una cadena con los digitos 0, 1, 2 o 3 en cualquier orden, para evaluar: ").upper()
     
     estado_actual = {estado_inicial}
 
@@ -88,7 +89,7 @@ def main():
           nuevos_estados.update(transiciones(estado, simbolo))
         estado_actual = nuevos_estados
 
-    if estado_final in estado_actual:
+    if estado_final.intersection(estado_actual):
         print("La cadena es válida")
     else:
         print("La cadena NO es válida.")

@@ -24,7 +24,7 @@ def transiciones(estado, simbolo):
     elif estado == 'q3' and simbolo == 'C':
         return ['q8']
     elif estado == 'q3' and simbolo == 'G':
-        return []
+        return ['q8']
 
     elif estado == 'q4' and simbolo == 'A':
         return  ['q5', 'q8']
@@ -36,11 +36,11 @@ def transiciones(estado, simbolo):
         return  ['q5','q8']
 
     elif estado == 'q5' and simbolo == 'A':
-        return  ['q3','q8']
+        return  ['q8']
     elif estado == 'q5' and simbolo == 'T':
-        return ['q3','q8']
+        return ['q8']
     elif estado == 'q5' and simbolo == 'C':
-        return ['q3','q8']
+        return ['q8']
     elif estado == 'q5' and simbolo == 'G':
         return ['q8']
 
@@ -60,7 +60,7 @@ def transiciones(estado, simbolo):
     elif estado == 'q7' and simbolo == 'C':
         return  ['q7','q8']
     elif estado == 'q7' and simbolo == 'G':
-        return  ['q8']
+        return  ['q7','q8']
 
     elif estado == 'q8' and simbolo == 'A':
         return  [ ]
@@ -83,7 +83,9 @@ def main():
 
     # Extraer la cadena de un archivo FASTA
     # Buscar el archivo
-    archivo = open(r'D:\proyectos\sequence.fasta', 'r')
+    #archivo = open(r'D:\proyectos\sequence.fasta', 'r')
+    #para los demas usen el de arriba
+    archivo = open(r'/Users/angellollerena/Documents/GitHub/TeoriaComputacion/sequence.fasta','r')
     # Obtener los datos
     datos = archivo.read()
     # Eliminar la primera línea

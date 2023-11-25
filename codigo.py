@@ -77,22 +77,45 @@ def main():
     estados = {'q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8'}
     alfabeto = {'A', 'T', 'C', 'G'}
     estado_inicial = 'q1'
-    estado_final = {'q8'}
+    estado_final = {'q8'}    
 
-    cadena = input("Ingrese una cadena con los digitos 0, 1, 2 o 3 en cualquier orden, para evaluar: ").upper()
-    
-    estado_actual = {estado_inicial}
+    #cadena = input("Ingrese una cadena con los digitos 0, 1, 2 o 3 en cualquier orden, para evaluar: ").upper()
 
-    for simbolo in cadena:
-        nuevos_estados = set()
-        for estado in estado_actual:
-          nuevos_estados.update(transiciones(estado, simbolo))
-        estado_actual = nuevos_estados
+    # Extraer la cadena de un archivo FASTA
+    # Buscar el archivo
+    archivo = open(r'D:\proyectos\sequence.fasta', 'r')
+    # Obtener los datos
+    datos = archivo.read()
+    # Eliminar la primera línea
+    datos_sin_1_linea = datos[47:]
+    # Eliminar los saltos de línea
+    # Obtener la cadena completa
+    cadena = datos_sin_1_linea.replace("\n", "")
 
-    if estado_final.intersection(estado_actual):
-        print("La cadena es válida")
-    else:
-        print("La cadena NO es válida.")
+    #Agrupa cadenas de 3 
+    def agrupar_en_tres(cadena):
+        conjuntos = [cadena[i:i+3] for i in range(0, len(cadena), 3)]
+        if len(conjuntos[-1]) == 1:
+            conjuntos[-2] += conjuntos[-1]
+            conjuntos.pop()
+        return conjuntos
+
+    conjuntos = agrupar_en_tres(cadena)
+
+    # Mostrar los conjuntos
+    for conjunto in conjuntos:
+        print(conjunto)
+        estado_actual = {estado_inicial}
+        for simbolo in conjunto:
+            nuevos_estados = set()
+            for estado in estado_actual:
+                nuevos_estados.update(transiciones(estado, simbolo))
+                estado_actual = nuevos_estados
+
+        if estado_final.intersection(estado_actual):
+            print("La cadena es válida")
+        else:
+            print("La cadena NO es válida.")
 
 if __name__ == "__main__":
     main()

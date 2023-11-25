@@ -31,11 +31,9 @@ cadena = 'TGAGGAG'
 #Agrupa cadenas de 3 
 def agrupar_en_tres(cadena):
     conjuntos = [cadena[i:i+3] for i in range(0, len(cadena), 3)]
-    
-    # Si sobra un carácter, agruparlo con los últimos tres caracteres
-    if len(cadena) % 3 == 1:
-        conjuntos[-1] += cadena[-1]
-    
+    if len(conjuntos[-1]) == 1:
+        conjuntos[-2] += conjuntos[-1]
+        conjuntos.pop()
     return conjuntos
 
 conjuntos = agrupar_en_tres(cadena)
